@@ -380,7 +380,7 @@ void Update(AlxWindow* w){
         if(ai >= NN_GENS) ai = 0;
     }
     if(Stroke(ALX_KEY_L).PRESSED){
-        for(int i = 0;i<nt.gensize;i++){
+        for(int i = nt.gensize - 1;i>=0;i--){
             RLNeuralNetworkEnv* rlnnenv = nt.rlnnenvs + i;
             
             CStr path = CStr_Format(NN_PATH "%d." NN_PATHTYPE,i);
@@ -388,6 +388,7 @@ void Update(AlxWindow* w){
                 NeuralNetwork_Free(&rlnnenv->rlnn.nn);
                 rlnnenv->rlnn.nn = NeuralNetwork_Load(path);
                 printf("Loaded \"%s\"\n",path);
+                break;
             }else{
                 printf("Didn't Load \"%s\"\n",path);
             }
