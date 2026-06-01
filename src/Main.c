@@ -343,7 +343,7 @@ void NeuralNetwork_Render(NeuralNetwork* nn){
 }
 
 void Setup(AlxWindow* w){
-    RGA_Set(Time_Nano());
+    Random_Set(Time_Nano());
 
     training = 0;
     ai = 0;
